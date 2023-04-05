@@ -1,0 +1,47 @@
+
+/* -- LAYOUT STYLING -- */
+
+.outer-container {
+  width: var(--outer-container-size);
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 100vh;
+  /* border: 1px dashed red; */
+}
+
+.inner-container {
+  flex-basis: var(--inner-container-size);
+  flex-grow: 0;
+  flex-shrink: 1;
+  margin: 0 var(--inner-container-margin);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* border: 1px dashed blue; */
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: -5rem;
+  padding: 5rem 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+
+  
+}
+
+.logo-container {
+  width: 50%;
+}
+

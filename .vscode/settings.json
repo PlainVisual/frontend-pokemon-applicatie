@@ -1,0 +1,9 @@
+{
+  "emmet.extensionsPath": [
+    "javascript"
+  ],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  }
+}
