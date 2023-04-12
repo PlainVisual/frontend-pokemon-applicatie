@@ -1,0 +1,108 @@
+/* -- Fonts -- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,700;0,900;1,100;1,200;1,300;1,700;1,900&display=swap');
+
+
+/* -- Global styles - Variables -- */
+
+:root {
+
+  /* -- FONT-FAMILY -- */
+  
+  --ff-fontfamily: 'Poppins', sans-serif;
+  --ff-fontweight-thin: 100;
+  --ff-fontweight-exLight: 200;
+  --ff-fontweight-light: 300;
+  --ff-fontweight-medium: 500;
+  --ff-fontweight-bold: 700;
+  --ff-fontweight-black: 900;
+  
+  /* -- FONT-SIZING -- */
+  
+  --ff-fontsize-h1: clamp(1rem, 3vw + 1rem, 4rem);
+  --ff-fontsize-h2: 1.5rem;
+  --ff-fontsize-h3: 1.75rem;
+  --ff-fontsize-p: 1rem;
+  
+  /* -- COLORS -- */
+  
+  --primary-clr: hsl(22, 72%, 47%);
+  --secondary-clr: hsl(222 74% 43%);
+  --accent-clr:  hsl(22, 72%, 75%);
+  --font-clr: hsl(0, 0%, 5%);
+  
+  
+  /* -- LAYOUT CONTROL WIDTH AND MARGIN-- */
+  
+  --outer-container-size: 100%;
+  --inner-container-size: 1200px;
+  --inner-container-margin: 1.25em;
+  --padding-section: 1.25em;
+  
+  /* -- ANIMATION -- */
+  scroll-behavior: smooth;
+  --animation-transition:all 0.35s ease-in-out;
+
+  }
+  
+  /* -- CSS RESET -- */
+  
+  *, *::before, *::after {
+      box-sizing: border-box;
+    }
+  
+  * {
+  margin: 0px;
+  padding: 0px;
+  line-height: calc(1em + 0.5rem);
+  }
+  
+  body {
+  font-family: var(--ff-fontfamily);
+  font-weight: var(--ff-fontweight-normal);
+  font-size: var(--ff-fontsize-p);
+  color: var(--font-clr);
+  -webkit-font-smoothing: antialiased;
+  background-color: hsl(48, 100%, 50%);
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  input, button, textarea, select {
+      font: inherit;
+      
+    }
+  
+  img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  }
+  
+  /* -- TYPOGRAPHY -- */
+  
+  h1 {
+    font-size: var(--ff-fontsize-h1);
+    font-weight: var(--ff-fontweight-bold);
+  }
+  
+  h2 {
+    font-size: var(--ff-fontsize-h2);
+    font-weight: var(--ff-fontweight-normal);
+  }
+  
+  h3 {
+    font-size: var(--ff-fontsize-h3);
+    font-weight: var(--ff-fontweight-normal);
+  }
+  
+  a {
+    color: var(--accent-clr);
+    font-weight: var(--ff-fontweight-normal);
+    transition: var(--animation-transition);
+    outline: transparant;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  
+   
