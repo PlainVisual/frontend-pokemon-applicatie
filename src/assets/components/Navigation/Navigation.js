@@ -18,12 +18,12 @@ function Navigation({ pokemonData, offset, setOffset, setEndpoint }) {
 
   return (
 
-    <>
+    
     <div className="nav-btn">
      <button onClick={handlePreviousClick} disabled={offset === 0}>PREVIOUS</button>
      <button onClick={handleNextClick} disabled={pokemonData && pokemonData.length < 10}>NEXT</button>
     </div>
-    </>
+    
 
 
   )

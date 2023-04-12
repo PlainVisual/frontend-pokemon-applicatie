@@ -13,12 +13,19 @@ function App() {
  const [endpoint, setEndpoint] = useState('?limit=12&offset=0');
  // De useState die wordt gebruikt voor het opslaan van de offset van het aantal getoonde items
  const [offset, setOffset] = useState(0);
+  // De useState die wordt gebruikt om de error melding te tonen zodra de data niet kan worden geladen
+  const [error, toggleError] = useState(false)
+  // De useState die wordt gebruikt om de loading melding te tonen bij een trage verbinding
+  const [loading, toggleLoading] = useState(true)
   // useEffect waarbij de endpoint bij wijziging ervoor zorgt dat dan pas de data wordt geupdate.
    useEffect(() => {
 
     async function fetchData() {
 
+        
+
       	try {
+          toggleError(false);
           const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${ endpoint }&offset=${ offset }`);
           console.log(res.data.results);
           // Unieke pokemon url ophalen vanuit de results
@@ -30,16 +37,19 @@ function App() {
             const pokemonData = pokemonResponses.map(response => response.data);
           // De state wordt van de data voorzien in een array die we later via .map() gaan gebruiken om de data in te laden.
           setPokemonData(pokemonData);
+
+          setTimeout(() => {
+          toggleLoading(false);
+          }, 500);
           
         } catch(e) {
 
           console.error(e)
-          // Dit is een error message die wordt getoond zodra de data niet wordt geladen
-          const errorMsg = document.querySelector('.msgError')
-          errorMsg.innerHTML = `<h3>----- No data was loaded, try again later -----</h3>`
-          return errorMsg;
-        
+          toggleError(true);
+          toggleLoading(false);
+                  
         }
+        
       
     }
    if(endpoint) {
@@ -51,19 +61,25 @@ function App() {
   return (
     <>
     <div className="outer-container">
+      {loading && <span className='loadingMsg'>Hang on we are loading the data</span>}
       <div className="inner-container">
           <header>
             <div className="logo-container">
               <img className="header-image" src= { logo_pokomon } alt="logo-pokomon" />
             </div>
+            
+          </header>
+          <div className="sticky">
             <Navigation
               pokemonData={pokemonData}
               offset={offset}
               setOffset={setOffset}
               setEndpoint={setEndpoint}
             />
-          </header>
+            </div>
           <main>
+                 
+                 {error && <span>Something went wrong when fetching the data. Please try again later!</span>}
                  { pokemonData.length === 0 ? (
                     // Bij een trage verbinding wordt eerste de msgError getoond. Dit kan ook een loading gif zijn. Daarna wordt na het laden van de data de pokemon's ingeladen.
                     <div className="msgError">
@@ -75,7 +91,9 @@ function App() {
                         // Ik maak hier gebruik van de map methode om een lijst van componenten te tonen.
                         // Component PokemonCard wordt hier geladen en de data wordt als prop aan het component doorgegeven.
                         // De key hier gebruikt zodat react hier ook voor elk component een uniek ID heeft.
-                        <PokemonCard key={ pokemon.id } pokemon={ pokemon } />
+                        <PokemonCard 
+                            key={ pokemon.id } 
+                            pokemon={ pokemon } />
                               
                       ))
                     
